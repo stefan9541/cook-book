@@ -3,3 +3,7 @@
   font-weight: bold;
   justify-content: space-between;
 }
+
+.ant-descriptions-bordered .ant-descriptions-item-label {
+  width: 15%;
+}
