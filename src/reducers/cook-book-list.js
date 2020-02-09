@@ -1,5 +1,7 @@
 const initialState = {
   editingKey: null,
+  loading: false,
+  error: null,
   prevVersionRecipes: [
     {
       title: "chicken soup",
@@ -11,41 +13,39 @@ const initialState = {
       createdAt: Date.now()
     }
   ],
-  recipes: [
-    {
-      title: "chicken soup",
-      id: 3,
-      description: "beautiful chicken soup",
-      ingredients: "200ml water, salt",
-      howToCook: "boil water and salt, cook for 10 minutes",
-      createdAt: Date.now()
-    },
-    {
-      title: "Chicken Salat",
-      description: "beautiful chicken soup",
-      id: 33,
-      ingredients: "200ml water, salt",
-      howToCook: "boil water and salt, cook for 10 minutes",
-      createdAt: Date.now()
-    },
-    {
-      title: "baked turkey",
-      id: 333,
-      description: "beautiful chicken soup",
-      ingredients: "200ml water, salt",
-      howToCook: "boil water and salt, cook for 10 minutes",
-      createdAt: Date.now()
-    }
-  ]
+  recipes: []
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case "EDIT_RECIPES_KEY":
-      console.log(action.payload);
       return {
         ...state,
         editingKey: action.payload
+      };
+    case "GET_RECIPES_REQUEST":
+      return {
+        ...state,
+        loading: true,
+        error: null
+      };
+    case "GET_RECIPES_SUCCESS":
+      return {
+        ...state,
+        recipes: action.payload,
+        loading: false,
+        error: null
+      };
+    case "GET_RECIPES_FAILURE":
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+    case "ADD_NEW_RECIPES":
+      return {
+        ...state,
+        recipes: [...state.recipes, action.payload]
       };
 
     default:

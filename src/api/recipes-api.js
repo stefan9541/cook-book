@@ -8,6 +8,9 @@ class RecipesApi {
   getRecipes() {
     return axios.get("/recipes");
   }
+  createNewRecipes(recipes) {
+    return axios.post("/recipes", { recipes });
+  }
 }
 
 export default RecipesApi;

@@ -3,9 +3,6 @@ import PreviousRecipesVersion from "../previous-recipes-version/PreviousRecipesV
 import { Row, Button, Col, Popconfirm } from "antd";
 import { connect } from "react-redux";
 import { editRecipesKey } from "../../actions/cook-book-actions";
-import RecipesApi from "../../api/recipes-api";
-
-const api = new RecipesApi();
 
 const DescriptionRecipesHeader = ({
   recipesKey,
@@ -19,9 +16,7 @@ const DescriptionRecipesHeader = ({
         onConfirm={() => editRecipesKey(null)}
         title="Sure to cancel?"
       >
-        <Button onClick={() => api.getRecipes()} type="link">
-          Cancel
-        </Button>
+        <Button type="link">Cancel</Button>
       </Popconfirm>
     </Col>
   );

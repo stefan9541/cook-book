@@ -1,32 +1,32 @@
 import React from "react";
-import { Form, Input, Col, Button } from "antd";
+import { Form, Input, Col, Button, message } from "antd";
+import { connect } from "react-redux";
+import { newRecipes } from "../../actions/cook-book-actions";
 
 const { TextArea } = Input;
 
 const formItem = [
-  { name: "Title", type: "input" },
-  { name: "Description", type: "text" },
-  { name: "Ingredients", type: "text" },
-  { name: "HowToCook", type: "text" }
+  { name: "title", label: "Title", type: "input" },
+  { name: "description", label: "Description", type: "text" },
+  { name: "ingredients", label: "Ingredients", type: "text" },
+  { name: "howToCook", label: "How to cook", type: "text" }
 ];
 const getInput = type => {
-  if (type === "text") return <TextArea />;
+  if (type === "text") return <TextArea autoSize />;
   return <Input />;
 };
 
-const AddNewRecipes = props => {
-  const { getFieldDecorator, validateFields } = props.form;
-  const handleSumbit = e => {
-    validateFields((err, values) => {
-      console.log(values);
-    });
+const AddNewRecipes = ({ form, newRecipes }) => {
+  const { getFieldDecorator } = form;
+  const handleSumbit = async e => {
     e.preventDefault();
+    await newRecipes(form);
   };
   return (
     <Col xl={10} md={14} lg={10}>
       <Form onSubmit={handleSumbit} layout="vertical">
-        {formItem.map(({ name, type }) => (
-          <Form.Item label={name}>
+        {formItem.map(({ name, type, label }) => (
+          <Form.Item key={name} label={label}>
             {getFieldDecorator(name, {
               rules: [
                 {
@@ -46,4 +46,11 @@ const AddNewRecipes = props => {
   );
 };
 
-export default Form.create({ name: "add-new-recipes" })(AddNewRecipes);
+const mapDispatch = {
+  newRecipes
+};
+
+export default connect(
+  null,
+  mapDispatch
+)(Form.create({ name: "add-new-recipes" })(AddNewRecipes));
