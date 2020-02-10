@@ -3,18 +3,8 @@ import { Button, Tooltip } from "antd";
 
 const PreviousRecipesVersion = () => {
   return (
-    <Tooltip placement="topLeft" title="Добавить задачу">
-      <Popover
-        placement="leftBottom"
-        content={<NewArticleForm />}
-        title="Новая задача"
-        trigger="click"
-        overlayStyle={{ width: "300px" }}
-      >
-        <Button type="primary">
-          <Icon type="unordered-list" />
-        </Button>
-      </Popover>
+    <Tooltip title="Previous version">
+      <Button icon="unordered-list" />
     </Tooltip>
   );
 };

@@ -2,11 +2,10 @@ import React from "react";
 import { Descriptions, Input, Form } from "antd";
 import DescriptionRecipesHeader from "../description-recipes-header/DescriptionRecipesHeader";
 import { connect } from "react-redux";
-import FormContext from "../../context/form-context";
 
 const { TextArea } = Input;
 
-const EditableItem = ({
+const DescriptionItem = ({
   description,
   ingredients,
   howToCook,
@@ -45,18 +44,16 @@ const EditableItem = ({
   };
 
   return (
-    <FormContext.Provider value={form}>
-      <Descriptions
-        column={24}
-        bordered
-        title={<DescriptionRecipesHeader recipesKey={recipesKey} />}
-      >
-        <React.Fragment>
-          {renderItems(description, ingredients, howToCook)}
-        </React.Fragment>
-        )}
-      </Descriptions>
-    </FormContext.Provider>
+    <Descriptions
+      column={24}
+      bordered
+      title={<DescriptionRecipesHeader recipesKey={recipesKey} />}
+    >
+      <React.Fragment>
+        {renderItems(description, ingredients, howToCook)}
+      </React.Fragment>
+      )}
+    </Descriptions>
   );
 };
 
@@ -66,4 +63,4 @@ const mapState = state => {
   };
 };
 
-export default connect(mapState)(Form.create()(React.memo(EditableItem)));
+export default connect(mapState)(Form.create()(DescriptionItem));

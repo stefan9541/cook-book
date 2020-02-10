@@ -47,20 +47,6 @@ export default (state = initialState, action) => {
         ...state,
         recipes: [...state.recipes, action.payload]
       };
-    case "EDIT_RECIPES": {
-      const { id, recipes } = action.payload;
-      const newData = [...state.recipes];
-      const recipesIndex = state.recipes.findIndex(i => i._id === id);
-      const item = newData[recipesIndex];
-      newData.splice(recipesIndex, 1, {
-        ...item,
-        ...recipes
-      });
-      return {
-        ...state,
-        recipes: newData
-      };
-    }
 
     default:
       return state;

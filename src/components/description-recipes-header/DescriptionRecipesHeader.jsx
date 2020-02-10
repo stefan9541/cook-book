@@ -1,23 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import PreviousRecipesVersion from "../previous-recipes-version/PreviousRecipesVersion";
 import { Row, Button, Col, Popconfirm } from "antd";
 import { connect } from "react-redux";
-import { editRecipesKey, editRecipes } from "../../actions/cook-book-actions";
-import FormContext from "../../context/form-context";
+import { editRecipesKey } from "../../actions/cook-book-actions";
 
 const DescriptionRecipesHeader = ({
   recipesKey,
   editingKey,
-  editRecipes,
   editRecipesKey
 }) => {
-  console.log("hello");
-  const form = useContext(FormContext);
   const SaveCancelButton = () => (
     <Col>
-      <Button onClick={() => editRecipes(recipesKey, form)} type="link">
-        Save
-      </Button>
+      <Button type="link">Save</Button>
       <Popconfirm
         onConfirm={() => editRecipesKey(null)}
         title="Sure to cancel?"
@@ -47,9 +41,9 @@ const DescriptionRecipesHeader = ({
     </Row>
   );
 };
+
 const mapDispatch = {
-  editRecipesKey,
-  editRecipes
+  editRecipesKey
 };
 
 const mapState = state => {

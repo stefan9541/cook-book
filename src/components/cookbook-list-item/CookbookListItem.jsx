@@ -3,21 +3,12 @@ import { Collapse } from "antd";
 import CookBookListItemHeader from "./CookBookListItemHeader";
 import EditableItem from "./EditableItem";
 import "./CookbookListItem.css";
-import { connect } from "react-redux";
-import { editRecipesKey } from "../../actions/cook-book-actions";
 
 const { Panel } = Collapse;
 
-const CookbookListItem = ({ recipes, editRecipesKey }) => {
+const CookbookListItem = ({ recipes }) => {
   return (
-    <Collapse
-      onChange={() =>
-        setTimeout(() => {
-          editRecipesKey(null);
-        }, 150)
-      }
-      accordion
-    >
+    <Collapse accordion>
       {recipes.map(
         ({ title, _id, ingredients, howToCook, createdAt, description }) => {
           return (
@@ -40,8 +31,5 @@ const CookbookListItem = ({ recipes, editRecipesKey }) => {
     </Collapse>
   );
 };
-const mapDispatch = {
-  editRecipesKey
-};
 
-export default connect(null, mapDispatch)(CookbookListItem);
+export default CookbookListItem;

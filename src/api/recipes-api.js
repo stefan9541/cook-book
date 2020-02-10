@@ -11,9 +11,6 @@ class RecipesApi {
   createNewRecipes(recipes) {
     return axios.post("/recipes", { recipes });
   }
-  updateRecipes(id, recipes) {
-    return axios.put(`/recipes/${id}`, recipes);
-  }
 }
 
 export default RecipesApi;
