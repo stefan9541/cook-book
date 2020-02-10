@@ -1,6 +1,6 @@
 import RecipesApi from "../api/recipes-api";
 import { message } from "antd";
-const { getRecipes, createNewRecipes } = new RecipesApi();
+const { getRecipes, updateRecipes, createNewRecipes } = new RecipesApi();
 
 export const editRecipesKey = key => {
   return {
@@ -60,4 +60,35 @@ export const newRecipes = form => dispatch => {
   });
 };
 
-const editRecipes = recipes => {};
+const editRecipesAction = (id, recipes) => {
+  return {
+    type: "EDIT_RECIPES",
+    payload: { id, recipes }
+  };
+};
+
+export const editRecipes = (id, form) => (dispatch, getState) => {
+  const { recipes } = getState();
+  const currentRecipes = recipes.find(i => i._id === id);
+  form.validateFields(async (err, values) => {
+    try {
+      if (err) return;
+      const isValueEqual = Object.entries(values).every(i => {
+        const [key, value] = i;
+        return value.trim() === currentRecipes[key].trim();
+      });
+      if (isValueEqual) {
+        return dispatch(editRecipesKey(null));
+      }
+
+      await updateRecipes(id, values);
+      message.success("Recipes successfully edited");
+      dispatch(editRecipesAction(id, values));
+      dispatch(editRecipesKey(null));
+    } catch (error) {
+      message.error("Something get wrong, plz try again");
+      dispatch(editRecipesKey(null));
+    }
+  });
+  // dispatch();
+};
