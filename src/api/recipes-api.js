@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 const axios = Axios.create({
-  baseURL: "http://localhost:8080/api"
+  baseURL: "https://cook-book-test.herokuapp.com/api"
 });
 
 class RecipesApi {
