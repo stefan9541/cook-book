@@ -38,9 +38,9 @@ const mapDispatch = {
 
 const mapState = state => {
   return {
-    recipes: state.recipes,
-    error: state.error,
-    loading: state.loading
+    recipes: state.cookBookReducer.recipes,
+    error: state.cookBookReducer.error,
+    loading: state.cookBookReducer.loading
   };
 };
 

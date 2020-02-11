@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import PreviousRecipesVersion from "../previous-recipes-version/PreviousRecipesVersion";
+import PreviousRecipesButton from "../previous-recipes-button/PreviousRecipesButton";
 import { Row, Button, Col, Popconfirm } from "antd";
 import { connect } from "react-redux";
 import { editRecipesKey, editRecipes } from "../../actions/cook-book-actions";
@@ -11,7 +11,6 @@ const DescriptionRecipesHeader = ({
   editRecipes,
   editRecipesKey
 }) => {
-  console.log("hello");
   const form = useContext(FormContext);
   const SaveCancelButton = () => (
     <Col>
@@ -40,7 +39,7 @@ const DescriptionRecipesHeader = ({
               onClick={() => editRecipesKey(recipesKey)}
               icon="edit"
             />
-            <PreviousRecipesVersion />
+            <PreviousRecipesButton recipesKey={recipesKey} />
           </React.Fragment>
         )}
       </Row>
@@ -54,7 +53,7 @@ const mapDispatch = {
 
 const mapState = state => {
   return {
-    editingKey: state.editingKey
+    editingKey: state.cookBookReducer.editingKey
   };
 };
 

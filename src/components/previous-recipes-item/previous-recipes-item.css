@@ -1,0 +1,7 @@
+.prev-recipes-item {
+  font-weight: bold;
+}
+.prev-recipes-item:hover {
+  cursor: pointer;
+  background-color: #d0e5ff78;
+}

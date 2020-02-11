@@ -68,7 +68,9 @@ const editRecipesAction = (id, recipes) => {
 };
 
 export const editRecipes = (id, form) => (dispatch, getState) => {
-  const { recipes } = getState();
+  const {
+    cookBookReducer: { recipes }
+  } = getState();
   const currentRecipes = recipes.find(i => i._id === id);
   form.validateFields(async (err, values) => {
     try {
@@ -90,5 +92,4 @@ export const editRecipes = (id, form) => (dispatch, getState) => {
       dispatch(editRecipesKey(null));
     }
   });
-  // dispatch();
 };

@@ -16,25 +16,25 @@ const EditableItem = ({
 }) => {
   const { getFieldDecorator } = form;
   const renderItems = (...args) => {
-    const formItem = ["description", "ingredients", "howToCook"];
+    const formItemName = ["description", "ingredients", "howToCook"];
+    const descriptionLabel = ["Description", "Ingredients", "How to cook"];
     let items = [];
     for (let i = 0; i < 3; i++) {
-      let currentItem = formItem[i];
+      let currentItem = formItemName[i];
+      let label = descriptionLabel[i];
       if (editingKey !== recipesKey) {
         items.push(
-          <Descriptions.Item key={currentItem} span={24} label={currentItem}>
+          <Descriptions.Item key={currentItem} span={24} label={label}>
             {args[i]}
           </Descriptions.Item>
         );
       } else {
         items.push(
-          <Descriptions.Item key={currentItem} span={24} label={currentItem}>
+          <Descriptions.Item key={currentItem} span={24} label={label}>
             <Form.Item>
               {getFieldDecorator(currentItem, {
                 initialValue: args[i],
-                rules: [
-                  { required: true, message: `Please input ${currentItem}!` }
-                ]
+                rules: [{ required: true, message: `Please input ${label}!` }]
               })(<TextArea autoSize />)}
             </Form.Item>
           </Descriptions.Item>
@@ -62,7 +62,7 @@ const EditableItem = ({
 
 const mapState = state => {
   return {
-    editingKey: state.editingKey
+    editingKey: state.cookBookReducer.editingKey
   };
 };
 

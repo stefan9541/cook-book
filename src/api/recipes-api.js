@@ -14,6 +14,9 @@ class RecipesApi {
   updateRecipes(id, recipes) {
     return axios.put(`/recipes/${id}`, recipes);
   }
+  getPreviousRecipes(id) {
+    return axios.get(`/recipes/previous/${id}`);
+  }
 }
 
 export default RecipesApi;

@@ -2,17 +2,6 @@ const initialState = {
   editingKey: null,
   loading: false,
   error: null,
-  prevVersionRecipes: [
-    {
-      title: "chicken soup",
-      description: "very beautiful chicken soup",
-      ingredients:
-        "500ml 100gr tomato, 200gr parrot and 100g cabagge, water, salt",
-      howToCook: "boil , cook for 10 minutes",
-      parentId: 3,
-      createdAt: Date.now()
-    }
-  ],
   recipes: []
 };
 
@@ -45,7 +34,7 @@ export default (state = initialState, action) => {
     case "ADD_NEW_RECIPES":
       return {
         ...state,
-        recipes: [...state.recipes, action.payload]
+        recipes: [action.payload, ...state.recipes]
       };
     case "EDIT_RECIPES": {
       const { id, recipes } = action.payload;
