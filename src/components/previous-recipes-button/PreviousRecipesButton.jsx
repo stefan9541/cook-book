@@ -52,8 +52,7 @@ const PreviousRecipesButton = ({
 const mapState = state => {
   return {
     loading: state.previousRecipesReducer.loading,
-    error: state.previousRecipesReducer.error,
-    visibleList: state.previousRecipesReducer.visibleList
+    error: state.previousRecipesReducer.error
   };
 };
 

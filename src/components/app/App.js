@@ -1,6 +1,5 @@
 import React from "react";
 import { Row, Col } from "antd";
-import CookbookList from "../cookbook-list/CookbookList";
 import MenuTabs from "../menu-tabs/MenuTabs";
 
 import "antd/dist/antd.css";

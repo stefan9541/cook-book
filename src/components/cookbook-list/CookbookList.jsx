@@ -6,9 +6,7 @@ import { fetchRecipes } from "../../actions/cook-book-actions";
 
 const CookbookList = ({ recipes, fetchRecipes, loading, error }) => {
   useEffect(() => {
-    (async () => {
-      await fetchRecipes();
-    })();
+    fetchRecipes();
   }, []);
 
   if (loading) {

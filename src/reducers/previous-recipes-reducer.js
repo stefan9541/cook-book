@@ -1,7 +1,6 @@
 const initialState = {
   error: null,
   loading: false,
-  visibleList: false,
   prevVersionRecipes: []
 };
 
