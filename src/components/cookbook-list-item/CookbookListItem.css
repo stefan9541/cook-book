@@ -7,3 +7,22 @@
 .ant-descriptions-bordered .ant-descriptions-item-label {
   width: 15%;
 }
+
+.tree-list {
+  display: flex;
+  padding: 0 0 0 10px;
+}
+
+.tree-list-item {
+  margin-left: 5px;
+  line-height: 25px;
+}
+
+.tree-list-item-btn {
+  display: none;
+  margin-left: 20px;
+}
+
+.tree-list-item:hover .tree-list-item-btn {
+  display: inline-block;
+}

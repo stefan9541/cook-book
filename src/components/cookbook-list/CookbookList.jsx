@@ -5,9 +5,9 @@ import { Col, Result, Spin } from "antd";
 import { fetchRecipes } from "../../actions/cook-book-actions";
 
 const CookbookList = ({ recipes, fetchRecipes, loading, error }) => {
-  useEffect(() => {
-    fetchRecipes();
-  }, []);
+  // useEffect(() => {
+  //   fetchRecipes();
+  // }, []);
 
   if (loading) {
     return <Spin style={{ width: "100%" }} />;
