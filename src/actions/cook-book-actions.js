@@ -47,17 +47,17 @@ const addNewRecipes = recipes => {
 };
 
 export const newRecipes = form => dispatch => {
-  try {
-    form.validateFields(async (err, values) => {
+  form.validateFields(async (err, values) => {
+    try {
       if (err) return;
       const { data } = await createNewRecipes(values);
       dispatch(addNewRecipes(data));
       message.success("Recipes successfully added");
       form.resetFields();
-    });
-  } catch (error) {
-    message.error("Something get wrong, plz try again");
-  }
+    } catch (error) {
+      message.error("Something get wrong, plz try again");
+    }
+  });
 };
 
 const editRecipesAction = (id, recipes) => {
@@ -92,12 +92,4 @@ export const editRecipes = (id, form) => (dispatch, getState) => {
       dispatch(editRecipesKey(null));
     }
   });
-};
-
-export const addItem = id => {
-  console.log(id);
-  return {
-    type: "ADD_ITEM",
-    payload: id
-  };
 };
